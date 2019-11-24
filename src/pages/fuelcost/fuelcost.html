@@ -1,0 +1,29 @@
+<ion-content>
+  <ion-fab bottom right>
+    <button ion-fab (click)="addFuelCost()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <ion-card #GraphCard>
+    <ion-card-header>
+	  <ion-card-title>FuelCostGraph</ion-card-title>
+	</ion-card-header>
+	<ion-card-content>
+	  <canvas class="FuelCostGraph" #GraphCanvas></canvas>
+	</ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of fuelcosts">
+	  <ion-item (click)="modifyFuelCost(item)">
+        <ion-row>
+          <ion-col>{{item.Date}}</ion-col>
+          <ion-col>{{item.Cost}} km/l</ion-col>
+        </ion-row>
+      </ion-item>
+	  <ion-item-options side="right">
+	    <button ion-button (click)="removeFuelCost(item)">
+		  <ion-icon name="trash"></ion-icon>
+		</button>
+	  </ion-item-options>	  
+    </ion-item-sliding>	
+	<ion-item></ion-item>
+  </ion-list>
+</ion-content>

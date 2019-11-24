@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Tuning</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>PartName</ion-label>
+      <ion-input type="text" value="{{tuning.PartName}}" #PartName></ion-input>
+	</ion-item>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" value="{{tuning.Name}}" #Name></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Price</ion-label>
+      <ion-input type="number" value="{{tuning.Price}}" #Price></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="submit()">Add tuning</button>
+  <button ion-button (click)="cancel()">Cancel</button>
+</ion-content>

@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Car</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" value="{{car.Name}}" #Name></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Code</ion-label>
+      <ion-input type="text" value="{{car.Code}}" #Code></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Image</ion-label>
+	  <ion-input type="text" value="{{car.Image}}" #Image></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="submit()">Add Car</button>
+</ion-content>

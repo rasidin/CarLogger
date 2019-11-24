@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add FuelCost</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Cost</ion-label>
+		<ion-input type="number" value="{{item.Name}}" #Cost></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" #Date>{{item.Date}}</ion-datetime>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="submit()">Add fuelcost</button>
+  <button ion-button (click)="cancel()">Cancel</button>
+</ion-content>

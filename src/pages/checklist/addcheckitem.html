@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add CheckList</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" value="{{item.Name}}" #Name></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Repeat</ion-label>
+      <ion-select #Repeat>
+        <ion-option value="0" selected="true">Once</ion-option>
+        <ion-option value="1">1Month</ion-option>
+        <ion-option value="2">2Month</ion-option>
+        <ion-option value="3">3Month</ion-option>
+        <ion-option value="6">6Month</ion-option>
+        <ion-option value="12">1Year</ion-option>
+        <ion-option value="24">2Year</ion-option>
+        <ion-option value="36">3Year</ion-option>
+        <ion-option value="48">4Year</ion-option>
+        <ion-option value="60">5Year</ion-option>
+      </ion-select>
+    </ion-item>
+	<ion-item>
+	  <ion-label floating>NextDate</ion-label>
+      <ion-datetime max="2040-12-30" displayFormat="YYYY-MM-DD" #NextDate>{{item.NextDate}}</ion-datetime>	  
+	</ion-item>
+  </ion-list>
+  <button ion-button (click)="submit()">Add check item</button>
+  <button ion-button (click)="cancel()">Cancel</button>
+</ion-content>

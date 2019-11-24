@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add History</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+	  <ion-label>New History</ion-label>
+	</ion-list-header>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" value="{{history.Name}}" #Name></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>ODO</ion-label>
+      <ion-input type="number" value="{{history.ODO}}" #ODO></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Price</ion-label>
+      <ion-input type="number" value="{{history.Price}}" #Price></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" #Date>{{history.Date}}</ion-datetime>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="submit()">Add History</button>
+  <button ion-button (click)="cancel()">Cancel</button>
+</ion-content>

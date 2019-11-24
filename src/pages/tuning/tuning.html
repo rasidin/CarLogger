@@ -1,0 +1,36 @@
+<ion-content>
+  <ion-fab bottom right>
+    <button ion-fab (click)="addTuning()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <ion-card #GraphCard>
+    <ion-card-header>
+	  <ion-card-title>Progress</ion-card-title>
+		<ion-buttons end>
+		  <button ion-button (click)="toggleReorder()">{{reordername}}</button>
+		</ion-buttons>
+	</ion-card-header>
+	<ion-card-content>
+	  <canvas class="TuningProgress" #GraphCanvas></canvas>
+	</ion-card-content>
+  </ion-card>
+  <ion-list [reorder]="reordering" (ionItemReorder)="reorderData($event)">
+    <ion-item-sliding *ngFor="let item of tuninglist">
+	  <ion-item (click)="checkTuning(item)">
+        <ion-row>
+		  <ion-col><ion-icon name="checkmark-circle" *ngIf="item.Equip==true"></ion-icon><ion-icon name="checkmark-circle-outline" *ngIf="item.Equip==false"></ion-icon></ion-col>
+		  <ion-col>{{item.PartName}}</ion-col>
+          <ion-col>{{item.Name}}</ion-col>
+          <ion-col>{{item.Price}}</ion-col>
+        </ion-row>
+      </ion-item>
+	  <ion-item-options side="right">
+	    <button ion-button (click)="modifyTuning(item)">
+		  <ion-icon name="brush"></ion-icon>
+		</button>
+	    <button ion-button (click)="removeTuning(item)">
+		  <ion-icon name="trash"></ion-icon>
+		</button>
+	  </ion-item-options>	  
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

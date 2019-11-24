@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{CarName}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
+	<ion-tab [root]="MaintenanceTab" [rootParams]="navParams" tabTitle="Maintenance"></ion-tab>
+	<ion-tab [root]="TuningTab" [rootParams]="navParams" tabTitle="Tuning"></ion-tab>
+    <ion-tab [root]="CheckListTab" [rootParams]="navParams" tabTitle="CheckList"></ion-tab>
+	<ion-tab [root]="FuelCostTab" [rootParams]="navParams" tabTitle="FuelCost"></ion-tab>
+    <ion-tab [root]="HistoryTab" [rootParams]="navParams"  tabTitle="History"></ion-tab>
+  </ion-tabs>
+</ion-content>
