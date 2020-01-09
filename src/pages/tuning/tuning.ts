@@ -91,7 +91,7 @@ export class TuningPage
   removeTuning(item) {
     var indexOfItem = this.tuninglist.indexOf(item);
 	if (indexOfItem >= 0) {
-      this.tuninglist.splice(item, 1);
+      this.tuninglist.splice(indexOfItem, 1);
       this.db.save();
 	}
   }

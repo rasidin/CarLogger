@@ -136,6 +136,7 @@ export class MaintenancePage
 	  minPrice = Math.min(this.maintenancecosttable[priceIndex], minPrice);
 	}
 	this.maintenancemincost = Math.abs(minPrice);
+	console.log(this.maintenancecosttable);
 	if (minPrice < 0) {
 	  for(var priceindex=0;priceindex<60;priceindex++) {
 		this.maintenancecosttable[priceindex] += this.maintenancemincost;

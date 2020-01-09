@@ -14,6 +14,13 @@ export class HistoryPage
   constructor(public appCtrl: App, public navCtrl: NavController, public navParams: NavParams) {
     this.db = this.navParams.data.db;
     this.histories = this.navParams.data.histories;
+	this.histories.sort((a,b) => {
+		var ADates = a.Date.split('-');
+		var BDates = b.Date.split('-');
+		var ADatesInt = parseInt(ADates[0] + ADates[1] + ADates[2]);
+		var BDatesInt = parseInt(BDates[0] + BDates[1] + BDates[2]);
+		return ADatesInt - BDatesInt;
+	});
   }
   addHistory() {
     var todayDate = new Date();
