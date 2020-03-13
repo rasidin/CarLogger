@@ -31,6 +31,7 @@ export class HistoryPage
 	  "Name": "",
 	  "ODO": 0,
 	  "Price": 0,
+	  "Wage": 0,
 	  "Date": todayYear + "-" + todayMonth + "-" + todayDay,
 	  "Description": ""
 	};
@@ -38,6 +39,8 @@ export class HistoryPage
     this.appCtrl.getRootNav().push(AddHistoryPage, {db: this.db, history: newHistory, postcancel: () => {this.removeHistory(newHistory)}});
   }
   modifyHistory(item) {
+	if (item.Wage == null || item.Wage == undefined)
+		item.Wage = 0;
     this.appCtrl.getRootNav().push(AddHistoryPage, {db: this.db, history: item});
   }
   removeHistory(item) {

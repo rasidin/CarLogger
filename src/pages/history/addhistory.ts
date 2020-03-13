@@ -7,10 +7,11 @@ import { Content, NavController, NavParams } from 'ionic-angular';
 })
 export class AddHistoryPage
 {
-  @ViewChild("Name") Name;
-  @ViewChild("ODO") ODO;
-  @ViewChild("Date") Date;
+  @ViewChild("Name")  Name;
+  @ViewChild("ODO")   ODO;
+  @ViewChild("Date")  Date;
   @ViewChild("Price") Price;
+  @ViewChild("Wage")  Wage;
   
   db: any = null;
   history: any = null;
@@ -36,6 +37,7 @@ export class AddHistoryPage
     this.history.ODO = this.ODO.value;
     this.history.Date = this.Date._text;
     this.history.Price = this.Price.value;
+	this.history.Wage = this.Wage.value;
     this.db.save();
 
 	if (this.postok != undefined && this.postok != null) {

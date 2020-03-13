@@ -11,6 +11,7 @@ export class AddMaintenancePage
   @ViewChild("Repeat") Repeat;
   @ViewChild("NextDate") NextDate;
   @ViewChild("Price") Price;
+  @ViewChild("Wage") Wage;
   @ViewChild("Maker") Maker;
   @ViewChild("ProductName") ProductName;
   @ViewChild("ProductCode") ProductCode;
@@ -31,7 +32,7 @@ export class AddMaintenancePage
 	this.Repeat.value = this.maintenance.Repeat;
   }
   ionViewWillLeave() {
-	if (!this.isModified) {
+	if (!this.isModified && this.postcancel != null) {
 	  this.postcancel();
 	}
   }
@@ -43,6 +44,7 @@ export class AddMaintenancePage
 	this.maintenance.ProductName 	= this.ProductName.value;
 	this.maintenance.ProductCode 	= this.ProductCode.value;
     this.maintenance.Price    		= this.Price.value;
+	this.maintenance.Wage			= this.Wage.value;
     this.db.save();
 
     if (this.postok != null && this.postok != undefined) {

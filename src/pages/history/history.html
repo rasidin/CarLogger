@@ -4,13 +4,11 @@
   </ion-fab>
   <ion-list>
     <ion-item-sliding *ngFor="let item of histories">
-	  <ion-item>
+	  <ion-item (click)="modifyHistory(item)">
         <ion-row>
-          <ion-col>{{item.Date}}</ion-col>
-          <ion-col>{{item.ODO}}</ion-col>
-          <ion-col>{{item.Name}}</ion-col>
-		  <ion-col>{{item.Description}}</ion-col>
-          <ion-col>{{item.Price}}</ion-col>
+          <ion-col>{{item.Date}}<br>{{item.ODO}} km</ion-col>
+          <ion-col>{{item.Name}}<br>{{item.Description}}</ion-col>
+          <ion-col>{{item.Price}}<br>({{item.Wage}})</ion-col>
         </ion-row>
       </ion-item>
 	  <ion-item-options side="right">

@@ -48,6 +48,10 @@
       <ion-label floating>Price</ion-label>
       <ion-input type="number" value="{{maintenance.Price}}" #Price></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label floating>Wage</ion-label>
+      <ion-input type="number" value="{{maintenance.Wage}}" #Wage></ion-input>
+    </ion-item>
   </ion-list>
   <button ion-button (click)="submit()">Add Maintenance</button>
   <button ion-button (click)="cancel()">Cancel</button>

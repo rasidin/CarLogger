@@ -111,8 +111,10 @@ export class MaintenancePage
 	endDate.year += 5;
 	for (var mainIndex=0;mainIndex<this.maintenances.length;mainIndex++) {
 	  var maintenance = this.maintenances[mainIndex];
+	  if (maintenance.Wage == null || maintenance.Wage == undefined)
+		  maintenance.Wage = 0;
 	  if (maintenance.Repeat > 0) {
-		this.maintenancecost += maintenance.Price * (60 / maintenance.Repeat);
+		this.maintenancecost += (parseInt(maintenance.Price) + parseInt(maintenance.Wage)) * (60 / maintenance.Repeat);
 	  } else
 		continue;
 	  var currentDate = new DateCalc();
@@ -121,7 +123,7 @@ export class MaintenancePage
 	  while(endDate.toInt() > currentDate.toInt() && loopcount < 30) {
 		if (todayDate.toInt() < currentDate.toInt()) {
 		  var currentPriceIndex = currentDate.diffMonth(todayDate);
-		  this.maintenancecosttable[currentPriceIndex] -= maintenance.Price;
+		  this.maintenancecosttable[currentPriceIndex] -= (parseInt(maintenance.Price) + parseInt(maintenance.Wage));
 		}
 		currentDate.addMonth(parseInt(maintenance.Repeat));
 		loopcount++;
@@ -175,7 +177,7 @@ export class MaintenancePage
   getTodayDateString() {
     var todayDate = new Date();
 	var todayYear = todayDate.getFullYear().toString();
-	var todayMonth = ((todayDate.getMonth() < 10) ? "0" : "") + todayDate.getMonth();
+	var todayMonth = ((todayDate.getMonth() + 1 < 10) ? "0" : "") + (todayDate.getMonth() + 1);
 	var todayDay = ((todayDate.getDay() < 10) ? "0" : "") + todayDate.getDay();
 	return todayYear + "-" + todayMonth + "-" + todayDay;
   }
@@ -187,7 +189,8 @@ export class MaintenancePage
 	  "ProductCode":"",
 	  "Repeat": 0,
 	  "NextDate": this.getTodayDateString(),
-	  "Price": 0
+	  "Price": 0,
+	  "Wage": 0
 	};
 	this.maintenances.push(newMaintenance);
     this.appCtrl.getRootNav().push(AddMaintenancePage, {db: this.db, maintenance: newMaintenance, postok: () => {this.calculateMaintenanceCost();}, postcancel: () => {this.removeMaintenance(newMaintenance);}});
@@ -214,6 +217,7 @@ export class MaintenancePage
 	  "ODO": 0,
 	  "Description": item.Maker + " - " + item.ProductName,
 	  "Price": item.Price,
+	  "Wage": item.Wage,
 	  "Date": item.NextDate
 	};
 	this.histories.push(newHistory);
