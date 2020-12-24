@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "CarLogger",
+  "short_name": "CarLogger",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

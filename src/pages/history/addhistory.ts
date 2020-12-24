@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Content, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
 	selector:'page-addhistory',
@@ -21,8 +21,8 @@ export class AddHistoryPage
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.history = this.navParams.data.history;
     this.db = this.navParams.data.db;
-	this.postok = this.navParams.data.postok;
-	this.postcancel = this.navParams.data.postcancel;
+	  this.postok = this.navParams.data.postok;
+	  this.postcancel = this.navParams.data.postcancel;
   }
   ionViewDidLoad() {
     this.Date._text = this.history.Date;

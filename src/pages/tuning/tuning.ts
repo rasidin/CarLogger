@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, Content, NavController, NavParams, reorderArray } from 'ionic-angular';
+import { App, NavController, NavParams, reorderArray } from 'ionic-angular';
 
 import { AddTuningPage } from '../tuning/addtuning';
 
@@ -39,23 +39,23 @@ export class TuningPage
   }
   reorderData(indexes) {
     this.tuninglist = reorderArray(this.tuninglist, indexes);
-	this.db.save();
+    this.db.save();
   }
   checkTuning(item) {
-	if (item.Equip == undefined || item.Equip == null) 
-		item.Equip = false;
-	item.Equip = !item.Equip;
-	this.db.save();
-	
-	this.drawProgress();
+    if (item == undefined || item == null) return;
+    if (item.Equip == undefined || item.Equip == null) 
+      item.Equip = false;
+    item.Equip = !item.Equip;
+    this.db.save();
+    
+    this.drawProgress();
   }
   drawProgress() {
     var ctx = this.graphCanvas.getContext('2d');
-	this.graphCanvas.width = this.GraphCard.nativeElement.clientWidth;
-	this.graphCanvas.height = 30;
+  	this.graphCanvas.width = this.GraphCard.nativeElement.clientWidth;
+  	this.graphCanvas.height = 30;
 	
     var width = this.graphCanvas.width;
-    var height = this.graphCanvas.height;
 	
 	ctx.fillStyle = '#000';
 	ctx.fillRect(0, 0, width, 10);
@@ -63,7 +63,9 @@ export class TuningPage
 	var totalPrice = 0;
 	var buyedPrice = 0;
 	for(var tunidx=0;tunidx<this.tuninglist.length;tunidx++) {
+      if (this.tuninglist[tunidx] == undefined || this.tuninglist[tunidx] == null) continue;
       totalPrice += parseInt(this.tuninglist[tunidx].Price);
+      if (this.tuninglist[tunidx] != undefined && this.tuninglist[tunidx] != null && this.tuninglist[tunidx].Equip != undefined && this.tuninglist[tunidx].Equip != null)
       if (this.tuninglist[tunidx].Equip) {
         buyedPrice += parseInt(this.tuninglist[tunidx].Price);
       }

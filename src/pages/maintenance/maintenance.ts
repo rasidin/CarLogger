@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, Content, NavController, NavParams, PopoverController, ViewController, reorderArray } from 'ionic-angular';
+import { App, NavController, NavParams, PopoverController, ViewController, reorderArray } from 'ionic-angular';
 
 import { AddMaintenancePage } from '../maintenance/addmaintenance';
 import { AddHistoryPage } from '../history/addhistory';
@@ -9,7 +9,7 @@ class DateCalc
   year: any = 0;
   month: any = 0;
   day: any = 0;
-	
+
   constructor() {
 	this.year = 0;
 	this.month = 0;
@@ -68,7 +68,7 @@ export class MaintenanceSortPage {
 export class MaintenancePage
 {
   @ViewChild('MaintenanceGraph') MaintenanceGraph;
-	
+
   db: any;
   reordername: any;
   reorderflag: any;
@@ -100,7 +100,8 @@ export class MaintenancePage
   }
   calculateMaintenanceCost() {
 	this.maintenancecosttable = [];
-	for (var priceIndex=0;priceIndex<60;priceIndex++) {
+	var priceIndex = 0;
+	for (priceIndex=0;priceIndex<60;priceIndex++) {
 	  this.maintenancecosttable.push(0);
 	}
 	var todayDate = new DateCalc();
@@ -131,17 +132,17 @@ export class MaintenancePage
 	}
     this.maintenancecost = Math.round(this.maintenancecost / 60);
 	var minPrice = this.maintenancecosttable[0];
-	for (var priceIndex=1;priceIndex<60;priceIndex++) {
+	for (priceIndex=1;priceIndex<60;priceIndex++) {
 	  this.maintenancecosttable[priceIndex] += this.maintenancecost;
 	  if (priceIndex > 0)
 		this.maintenancecosttable[priceIndex] += this.maintenancecosttable[priceIndex-1];
 	  minPrice = Math.min(this.maintenancecosttable[priceIndex], minPrice);
 	}
 	this.maintenancemincost = Math.abs(minPrice);
-	console.log(this.maintenancecosttable);
+
 	if (minPrice < 0) {
-	  for(var priceindex=0;priceindex<60;priceindex++) {
-		this.maintenancecosttable[priceindex] += this.maintenancemincost;
+	  for(priceIndex=0;priceIndex<60;priceIndex++) {
+		this.maintenancecosttable[priceIndex] += this.maintenancemincost;
 	  }
 	}
   }
@@ -151,12 +152,6 @@ export class MaintenancePage
 	popover.present({
 	  ev: e
 	});
-    // this.reorderflag = !this.reorderflag;
-	// if (this.reorderflag) {
-		// this.reordername = "OK";
-	// } else {
-		// this.reordername = "SORT";
-	// }
   } 
   sortList() {
 	this.maintenances = this.maintenances.sort((a,b)=>{ 
@@ -204,6 +199,7 @@ export class MaintenancePage
       this.maintenances.splice(indexOfItem, 1);
 	}
 	this.calculateMaintenanceCost();
+	this.db.save();
   }
   updateMaintenanceDate(item) {
 	var mtDate = new DateCalc();

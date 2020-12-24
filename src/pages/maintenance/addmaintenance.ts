@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Content, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
 	selector:'page-addmaintenance',
@@ -15,7 +15,7 @@ export class AddMaintenancePage
   @ViewChild("Maker") Maker;
   @ViewChild("ProductName") ProductName;
   @ViewChild("ProductCode") ProductCode;
-  
+
   db: any = null;
   maintenance: any = null;
   postok: any = null;
@@ -24,27 +24,27 @@ export class AddMaintenancePage
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.maintenance = this.navParams.data.maintenance;
     this.db = this.navParams.data.db;
-	this.postok = this.navParams.data.postok;
-	this.postcancel = this.navParams.data.postcancel;
+    this.postok = this.navParams.data.postok;
+    this.postcancel = this.navParams.data.postcancel;
   }
   ionViewDidLoad() {
     this.NextDate._text = this.maintenance.NextDate;
-	this.Repeat.value = this.maintenance.Repeat;
+    this.Repeat.value = this.maintenance.Repeat;
   }
   ionViewWillLeave() {
-	if (!this.isModified && this.postcancel != null) {
-	  this.postcancel();
-	}
+    if (!this.isModified && this.postcancel != null) {
+      this.postcancel();
+    }
   }
   submit() {
-    this.maintenance.Name     		= this.Name.value;
-    this.maintenance.Repeat   		= this.Repeat.value;
-    this.maintenance.NextDate 		= this.NextDate._text;
-	this.maintenance.Maker 			= this.Maker.value;
-	this.maintenance.ProductName 	= this.ProductName.value;
-	this.maintenance.ProductCode 	= this.ProductCode.value;
-    this.maintenance.Price    		= this.Price.value;
-	this.maintenance.Wage			= this.Wage.value;
+    this.maintenance.Name         = this.Name.value;
+    this.maintenance.Repeat       = this.Repeat.value;
+    this.maintenance.NextDate     = this.NextDate._text;
+    this.maintenance.Maker        = this.Maker.value;
+    this.maintenance.ProductName  = this.ProductName.value;
+    this.maintenance.ProductCode  = this.ProductCode.value;
+    this.maintenance.Price        = this.Price.value;
+    this.maintenance.Wage         = this.Wage.value;
     this.db.save();
 
     if (this.postok != null && this.postok != undefined) {
@@ -56,8 +56,8 @@ export class AddMaintenancePage
   }
   cancel() {
 	  if (this.postcancel != null && this.postcancel != undefined)
-		  this.postcancel();
-	this.isModified = true;
-    this.navCtrl.pop();
+      this.postcancel();
+      this.isModified = true;
+      this.navCtrl.pop();
   }
 }

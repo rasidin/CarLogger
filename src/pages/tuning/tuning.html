@@ -16,7 +16,7 @@
   <ion-list [reorder]="reordering" (ionItemReorder)="reorderData($event)">
     <ion-item-sliding *ngFor="let item of tuninglist">
 	  <ion-item (click)="checkTuning(item)">
-        <ion-row>
+        <ion-row *ngIf="item != undefined && item != null">
 		  <ion-col><ion-icon name="checkmark-circle" *ngIf="item.Equip==true"></ion-icon><ion-icon name="checkmark-circle-outline" *ngIf="item.Equip==false"></ion-icon></ion-col>
 		  <ion-col>{{item.PartName}}</ion-col>
           <ion-col>{{item.Name}}</ion-col>

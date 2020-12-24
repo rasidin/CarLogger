@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { App, Content, NavController, NavParams } from 'ionic-angular';
+import { App, NavController, NavParams } from 'ionic-angular';
 
 import { AddFuelCostPage } from '../fuelcost/addfuelcost';
 
@@ -33,13 +33,8 @@ export class FuelCostPage
     this.drawGraph();
   }
   drawGraph() {
-    var ctx = this.graphCanvas.getContext('2d');
-	this.graphCanvas.width = this.GraphCard.nativeElement.clientWidth;
-	this.graphCanvas.height = 100;
-	
-    var width = this.graphCanvas.width;
-    var height = this.graphCanvas.height;
-	  
+	  this.graphCanvas.width = this.GraphCard.nativeElement.clientWidth;
+    this.graphCanvas.height = 100;
   }
   addFuelCost() {
     var newItem = {

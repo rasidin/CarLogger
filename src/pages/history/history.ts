@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { App, Content, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { App, NavController, NavParams } from 'ionic-angular';
 
 import { AddHistoryPage } from '../history/addhistory';
 

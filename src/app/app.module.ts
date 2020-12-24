@@ -14,8 +14,6 @@ import { AddHistoryPage } from '../pages/history/addhistory';
 import { MaintenancePage } from '../pages/maintenance/maintenance';
 import { AddMaintenancePage } from '../pages/maintenance/addmaintenance';
 import { MaintenanceSortPage } from '../pages/maintenance/maintenance';
-import { CheckListPage } from '../pages/checklist/checklist';
-import { AddCheckItemPage } from '../pages/checklist/addcheckitem';
 import { TuningPage } from '../pages/tuning/tuning';
 import { AddTuningPage } from '../pages/tuning/addtuning';
 import { FuelCostPage } from '../pages/fuelcost/fuelcost';
@@ -32,8 +30,6 @@ import { MaintenanceGraphComponent } from '../components/maintenancegraph/mainte
 	MaintenancePage,
 	AddMaintenancePage,
 	MaintenanceSortPage,
-	CheckListPage,
-	AddCheckItemPage,
 	TuningPage,
 	AddTuningPage,
 	FuelCostPage,
@@ -55,15 +51,13 @@ import { MaintenanceGraphComponent } from '../components/maintenancegraph/mainte
 	AddHistoryPage,
 	MaintenancePage,
 	AddMaintenancePage,
-	CheckListPage,
-	AddCheckItemPage,
 	TuningPage,
 	AddTuningPage,
 	FuelCostPage,
 	AddFuelCostPage
   ],
   providers: [
-    StatusBar,
+	StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
